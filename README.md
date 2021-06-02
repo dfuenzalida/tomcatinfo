@@ -15,3 +15,7 @@ Deploy with
 ```
 mvn azure-webapp:deploy
 ```
+
+## Reference
+
+See https://github.com/apache/tomcat/blob/9.0.x/java/org/apache/catalina/util/ServerInfo.java

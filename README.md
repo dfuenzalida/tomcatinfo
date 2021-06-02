@@ -4,7 +4,7 @@ A simple app with a single JSP that shows the current versions of Tomcat and Jav
 
 ## Prerequisites
 
-* Java 8 or later
+* [Java 8 or later](https://adoptopenjdk.net/)
 * [Leinigen](https://leiningen.org/)
 * An Azure subscription ([free trial here](https://azure.microsoft.com/en-us/free/))
 * [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)

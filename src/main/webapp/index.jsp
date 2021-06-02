@@ -68,6 +68,12 @@
                     <%= System.getProperty("java.vm.vendor") %>
                 </td>
             </tr>
+            <tr>
+                <td>Current Date</td>
+                <td>
+                    <%= new java.util.Date() %>
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>

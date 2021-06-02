@@ -14,15 +14,21 @@
         <tbody>
             <tr>
                 <td>Server version</td>
-                <td><%= org.apache.catalina.util.ServerInfo.getServerInfo() ></td>
+                <td>
+                    <%= org.apache.catalina.util.ServerInfo.getServerInfo() %>
+                </td>
             </tr>
             <tr>
                 <td>Server built</td>
-                <td><%= org.apache.catalina.util.ServerInfo.getServerBuilt() ></td>
+                <td>
+                    <%= org.apache.catalina.util.ServerInfo.getServerBuilt() %>
+                </td>
             </tr>
             <tr>
                 <td>Server number</td>
-                <td><%= org.apache.catalina.util.ServerInfo.getServerNumber() ></td>
+                <td>
+                    <%= org.apache.catalina.util.ServerInfo.getServerNumber() %>
+                </td>
             </tr>
 
         </tbody>
@@ -34,23 +40,33 @@
         <tbody>
             <tr>
                 <td>OS Name</td>
-                <td><%= System.getProperty("os.name") ></td>
+                <td>
+                    <%= System.getProperty("os.name") %>
+                </td>
             </tr>
             <tr>
                 <td>OS Version</td>
-                <td><%= System.getProperty("os.version") ></td>
+                <td>
+                    <%= System.getProperty("os.version") %>
+                </td>
             </tr>
             <tr>
                 <td>OS Arch</td>
-                <td><%= System.getProperty("os.arch") ></td>
+                <td>
+                    <%= System.getProperty("os.arch") %>
+                </td>
             </tr>
             <tr>
                 <td>JVM version</td>
-                <td><%= System.getProperty("java.runtime.version") ></td>
+                <td>
+                    <%= System.getProperty("java.runtime.version") %>
+                </td>
             </tr>
             <tr>
                 <td>JVM Vendor</td>
-                <td><%= System.getProperty("java.vm.vendor") ></td>
+                <td>
+                    <%= System.getProperty("java.vm.vendor") %>
+                </td>
             </tr>
         </tbody>
     </table>

@@ -1,9 +1,17 @@
 # Tomcat info
 
-A simple app with a single JSP that shows the current version of Java and Tomcat
+A simple app with a single JSP that shows the current versions of Tomcat and Java
 
-Created with:
+## Deploy to Azure
+
+Configure your resources with
 
 ```
-mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.4
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
+```
+
+Deploy with
+
+```
+mvn azure-webapp:deploy
 ```

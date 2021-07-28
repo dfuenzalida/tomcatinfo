@@ -21,7 +21,7 @@ mvn clean package
 Configure your resources with
 
 ```
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:2.0.0:config
 ```
 
 Deploy with

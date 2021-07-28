@@ -74,6 +74,12 @@
                     <%= new java.util.Date() %>
                 </td>
             </tr>
+            <tr>
+                <td>Host name</td>
+                <td>
+                    <%= System.getenv("HOSTNAME") %>
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>

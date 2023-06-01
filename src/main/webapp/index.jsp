@@ -1,3 +1,12 @@
+<%
+  if ("Exception".equals(request.getParameter("throw"))) {
+      throw new Exception("Exception was thrown");
+  }
+
+  if ("RuntimeException".equals(request.getParameter("throw"))) {
+    throw new RuntimeException("RuntimeException was thrown");
+}
+%>
 <html>
 
 <head>
@@ -10,27 +19,20 @@
 
     <h3>Tomcat Info</h3>
 
+    <p>
+        Exception handling: 
+        <a href="?throw=Exception">throw an Exception</a> |
+        <a href="?throw=RuntimeException">throw a RuntimeException</a>
+    </p>
+
     <table class="table">
         <tbody>
             <tr>
-                <td>Server version</td>
+                <td>Server info</td>
                 <td>
-                    <%= org.apache.catalina.util.ServerInfo.getServerInfo() %>
+                    <%= application.getServerInfo() %>
                 </td>
             </tr>
-            <tr>
-                <td>Server built</td>
-                <td>
-                    <%= org.apache.catalina.util.ServerInfo.getServerBuilt() %>
-                </td>
-            </tr>
-            <tr>
-                <td>Server number</td>
-                <td>
-                    <%= org.apache.catalina.util.ServerInfo.getServerNumber() %>
-                </td>
-            </tr>
-
         </tbody>
     </table>
 
@@ -63,6 +65,12 @@
                 </td>
             </tr>
             <tr>
+                <td>java.version</td>
+                <td>
+                    <%= System.getProperty("java.version") %>
+                </td>
+            </tr>
+            <tr>
                 <td>JVM Vendor</td>
                 <td>
                     <%= System.getProperty("java.vm.vendor") %>
@@ -82,6 +90,26 @@
             </tr>
         </tbody>
     </table>
+
+    <h3>System properties</h3>
+
+    <table class="table">
+        <tbody>
+        <%
+            for (String propName: System.getProperties().stringPropertyNames()) {
+        %>
+            <tr>
+                <td><%= propName %></td>
+                <td>
+                    <%= System.getProperty(propName) %>
+                </td>
+            </tr>
+        <%
+            }
+        %>
+        </tbody>
+    </table>
+
 </body>
 
 </html>

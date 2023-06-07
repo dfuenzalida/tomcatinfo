@@ -42,7 +42,7 @@ jobs:
     - name: Azure CLI script file
       uses: azure/CLI@v1
       with:
-        azcliversion: 2.30.0
+        # azcliversion: 2.30.0
         inlineScript: |
           mkdir -p $GITHUB_WORKSPACE/webapps
           mv $GITHUB_WORKSPACE/target/tomcatinfo.war $GITHUB_WORKSPACE/webapps

@@ -29,17 +29,32 @@ jobs:
         java-version: ${{ env.JAVA_VERSION }}
     - name: Build with Maven
       run: mvn package --file pom.xml
-    
-    - uses: montudor/action-zip@v1
+
+    - name: Azure Login
+      uses: azure/login@v1
       with:
-       args: zip -0 -j tomcatinfo.zip target/tomcatinfo.war
-    
-    - name: 'Deploy to Azure WebApp'
-      uses: azure/webapps-deploy@v2
-      with: 
-        app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        # package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/target/tomcatinfo.war'
-        package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/tomcatinfo.zip'
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    # - uses: montudor/action-zip@v1
+    #  with:
+    #   args: zip -0 -j tomcatinfo.zip target/tomcatinfo.war
+
+    - name: Azure CLI script file
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.30.0
+        inlineScript: |
+          mkdir -p $GITHUB_WORKSPACE/webapps
+          mv $GITHUB_WORKSPACE/target/tomcatinfo.war $GITHUB_WORKSPACE/webapps
+          zip -0 -r $GITHUB_WORKSPACE/webapps.zip $GITHUB_WORKSPACE/webapps
+          az webapp deploy --resource-group tomcatinfo-github-action-rg --name tomcatinfo-github-action --type zip --src-path $GITHUB_WORKSPACE/webapps.zip
+
+    # - name: 'Deploy to Azure WebApp'
+    #   uses: azure/webapps-deploy@v2
+    #  with: 
+    #    app-name: ${{ env.AZURE_WEBAPP_NAME }}
+    #    publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
+    #    # package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/target/tomcatinfo.war'
+    #    package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/tomcatinfo.zip'
         
   # For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples

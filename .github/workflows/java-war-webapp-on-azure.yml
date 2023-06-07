@@ -47,7 +47,7 @@ jobs:
           mkdir -p $GITHUB_WORKSPACE/webapps
           mv $GITHUB_WORKSPACE/target/tomcatinfo.war $GITHUB_WORKSPACE/webapps
           cd $GITHUB_WORKSPACE
-          zip -0 -r $GITHUB_WORKSPACE/webapps.zip $GITHUB_WORKSPACE/webapps
+          zip -0 -r webapps.zip webapps
           unzip -v $GITHUB_WORKSPACE/webapps.zip
           az webapp deploy --resource-group tomcatinfo-github-action-rg --name tomcatinfo-github-action --type zip --src-path $GITHUB_WORKSPACE/webapps.zip
 

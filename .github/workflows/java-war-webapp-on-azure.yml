@@ -30,16 +30,16 @@ jobs:
     - name: Build with Maven
       run: mvn package --file pom.xml
     
-    # - uses: montudor/action-zip@v1
-    #  with:
-    #    args: zip -j tomcatinfo.zip target/tomcatinfo.war
+    - uses: montudor/action-zip@v1
+      with:
+       args: zip -0 -j tomcatinfo.zip target/tomcatinfo.war
     
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with: 
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/target/tomcatinfo.war'
-        # package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/tomcatinfo.zip'
+        # package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/target/tomcatinfo.war'
+        package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/tomcatinfo.zip'
         
   # For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples

@@ -30,20 +30,20 @@ jobs:
     - name: Build with Maven
       run: mvn package --file pom.xml
 
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
     - name: Deploy to Azure Web App
       id: deploy-to-webapp
       uses: dannysongg/webapps-deploy-ds@onedeploy-test
       with:
         app-name: 'tomcatinfo-github-action'
-        publish-profile: ${{ secrets.AZURE_CREDENTIALS }} 
+        # publish-profile: ${{ secrets.AZURE_CREDENTIALS }} 
         package: '*.war'
         type: war
         clean: true
-          
-    # - name: Azure Login
-    #   uses: azure/login@v1
-    #   with:
-    #     creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     # - name: Azure CLI script file
     #   uses: azure/CLI@v1

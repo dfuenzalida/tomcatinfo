@@ -37,7 +37,6 @@ jobs:
 
     - name: Deploy to Azure Web App
       id: deploy-to-webapp
-      # uses: dannysongg/webapps-deploy-ds@onedeploy-test
       uses: azure/webapps-deploy@v3
       with:
         app-name: 'tomcatinfo-github-action'

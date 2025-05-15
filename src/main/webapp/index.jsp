@@ -110,6 +110,25 @@
         </tbody>
     </table>
 
+    <h3>Request Headers</h3>
+
+    <table class="table">
+        <tbody>
+        <%
+            for (String header: request.getHeaderNames()) {
+        %>
+            <tr>
+                <td><%= header %></td>
+                <td>
+                    <%= request.getHeader(header) %>
+                </td>
+            </tr>
+        <%
+            }
+        %>
+        </tbody>
+    </table>
+
 </body>
 
 </html>
